@@ -34,7 +34,9 @@ This project allows users to:
 
 Follow these steps to clone and run the project locally.
 
-### 1️⃣ Clone the Repository
+### 1️⃣ Clone the Repository 
+INSTALL GIT USING ANY BROWSER AND SETUP LOCALLLY 
+THEN DO IT 
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
