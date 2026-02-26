@@ -102,32 +102,44 @@
 </head>
 
 <body>
-
 <div class="signup-container">
     <h2>Create Account</h2>
 
-    <form>
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color:red; text-align:center; margin-bottom:10px;">
+                {{ message }}
+            </p>
+        {% endfor %}
+    {% endif %}
+    <form method="POST">
+    {% csrf_token %}
         <div class="form-group">
-            <input type="text" placeholder="Username" required>
+            <input type="text" name="username" placeholder="Username" required>
         </div>
         <div class="form-group">
-            <input type="password" placeholder="Password" required>
+            <input type="password"  name="password"placeholder="Password" required>
         </div>
         <div class="form-group">
-            <input type="password" placeholder="Conform Password" required>
+            <input type="password" name="confirm_password" placeholder="Conform Password" required>
         </div>
         <div class="form-group">
-            <input type="email" placeholder="Email Address" required>
+            <input type="email" name="email" placeholder="Email Address" required>
         </div>
 
         <div class="form-group">
-            <input type="tel" placeholder="Phone Number" required>
+            <input type="tel" name="phone"placeholder="Phone Number" required>
         </div>
 
         <div class="form-group">
-            <input type="text" id="location" placeholder="Your Location" readonly>
-            <button type="button" class="location-btn" onclick="getLocation()">Get Location</button>
-        </div>
+            <input type="hidden" name="latitude" id="latitude" required>
+<input type="hidden" name="longitude" id="longitude" required>
+
+<input type="text" id="location_display" placeholder="Your Location" readonly>
+         <button type="button" class="location-btn" onclick="getLocation()">
+        Get Location
+    </button>
+</div>
 
         <button type="submit" class="signup-btn">Sign Up</button>
     </form>
@@ -139,16 +151,21 @@
 
 <script>
     function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                document.getElementById("location").value =
-                    "Lat: " + position.coords.latitude +
-                    ", Lon: " + position.coords.longitude;
-            });
-        } else {
-            alert("Geolocation is not supported by this browser.");
-        }
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+
+            document.getElementById("latitude").value = position.coords.latitude;
+            document.getElementById("longitude").value = position.coords.longitude;
+
+            document.getElementById("location_display").value =
+                "Lat: " + position.coords.latitude +
+                ", Lon: " + position.coords.longitude;
+
+        });
+    } else {
+        alert("Geolocation is not supported by this browser.");
     }
+}
 </script>
 
 </body>

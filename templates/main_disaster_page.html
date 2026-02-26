@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Disaster Management-Main_Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(0,0,0,0.4);
+            padding: 50px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        .logout-btn {
+            margin-top: 25px;
+            padding: 10px 20px;
+            background: white;
+            color: #ff416c;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .logout-btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Welcome to Our Project</h1>
+    <p><strong>Disaster Management and Alert System</strong></p>
+
+    {% if user.is_authenticated %}
+        <p>Hello, {{ user.username }} 👋</p>
+        <a href="{% url 'logout' %}">
+            <button class="logout-btn">Logout</button>
+        </a>
+    {% else %}
+        <p>Please login to continue.</p>
+    {% endif %}
+</div>
+
+</body>
+</html>
