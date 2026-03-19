@@ -35,19 +35,33 @@ This project allows users to:
 Follow these steps to clone and run the project locally.
 
 ### 1️⃣ Clone the Repository 
-INSTALL GIT USING ANY BROWSER AND SETUP LOCALLLY 
-THEN DO IT 
+Make sure you have Git installed, then run:
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
 cd YOUR_REPOSITORY_NAME
-python -m venv venv #Create Virtual Environment
-venv\Scripts\activate//activate envirnmemnt
-pip install -r requirements.txt//install dependendice
-//(if no requirments.txt their so create it )"pip freeze > requirements.txt"
-//apply migrations
+```
+
+### 🤖 One-Click Setup with Antigravity AI
+If you are using the **Antigravity AI**, you can instantly set up and run the code with a single command! Just type:
+```bash
+/setup
+```
+Antigravity will automatically create the virtual environment, install `requirements.txt`, run all database migrations, and start the local server!
+
+### 💻 One-Click setup for Windows Users
+If you are running this natively on Windows, we've provided a simple batch script to automate everything. Just double-click or run:
+```bash
+setup_and_run.bat
+```
+
+### 🛠️ Manual Installation (Advanced)
+If you prefer doing it piece by piece, run the following:
+```bash
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
 python manage.py makemigrations
 python manage.py migrate
-
-//AT LAST run the server
 python manage.py runserver
+```
